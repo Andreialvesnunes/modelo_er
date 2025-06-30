@@ -27,31 +27,30 @@ public class Pedidos {
         id = input.nextInt();
 
         if (Produto.idENomeProduto.containsKey(id)){
-            System.out.println("Quantidade disponível: " + quantidades.get(1-id));
+            System.out.println("Quantidade disponível: " + Estoque.quantidades.get(1-id));
 
             System.out.print("Quantidade desejada: ");
             quantidade = input.nextInt();
 
-            if (quantidade < quantidades.get(1-id)){
+            if (quantidade < Estoque.quantidades.get(1-id)){
 
-                int quantidadeEstoque = quantidades.get(1-id);
-
-                quantidadeEstoque = quantidadeEstoque - quantidade;
-
-                Estoque.quantidades.add(quantidadeEstoque);
+                quantidadeAtualizada(id, quantidade);
 
                 calcularValorTotalDoPedido(quantidade, 1-id);
+                adicionarProduto(produto);
             } else {
                 System.out.println("Quantidade indisponível");
 
-                System.out.println("Quantidade disponível: " + quantidades.get(1-id));
+                System.out.println("Quantidade disponível: " + Estoque.quantidades.get(1-id));
 
-                while (quantidade > quantidades.get(1-id)){
+                while (quantidade > Estoque.quantidades.get(1-id)){
                     System.out.print("Quantidade desejada: ");
                     quantidade = input.nextInt();
 
                     System.out.println("Quantidade indisponível");
                 }
+                adicionarProduto(produto);
+                quantidadeAtualizada(id, quantidade);
                 calcularValorTotalDoPedido(quantidade, 1-id);
             }
         }
@@ -62,11 +61,9 @@ public class Pedidos {
         System.out.println("O valor do pedido: " + total);
     }
 
-    private int quantidadeAtualizada(int id, int quantidade){
-        int quantidadeAtualPosPedido = quantidade - quantidades.get(1-id);
+    private void quantidadeAtualizada(int id, int quantidade){
+        int quantidadeEstoque = quantidade - Estoque.quantidades.get(1-id);
 
-
-
-        return quantidadeAtualPosPedido;
+        Estoque.quantidades.add(1-id, quantidadeEstoque);
     }
 }

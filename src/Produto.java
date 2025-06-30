@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Produto {
+public class Produto{
     Scanner input = new Scanner(System.in);
 
     static int id;
@@ -79,7 +79,7 @@ public class Produto {
         System.out.print("Quantidade: ");
         quantidadeProduto = input.nextInt();
 
-        quantidades.add(quantidadeProduto);
+        Estoque.quantidades.add(quantidadeProduto);
 
     }
 
