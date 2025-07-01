@@ -1,10 +1,10 @@
 # Sistema de Gestão de Vendas
 
-Aplicação para simular um ambiente de vendas, com funcionalidades que envolvem o ciclo completo de uma compra: desde o cadastro de produtos e realização de pedidos até o acompanhamento pós-venda.
+Simulação de um sistema de vendas com controle de produtos, clientes e pedidos, abrangendo também ações pós-compra como devoluções e avaliações.
 
 ## 🎯 Objetivo
 
-Colocar em prática conhecimentos de back-end com foco em lógica de negócios, manipulação de dados e estruturação de uma aplicação funcional com propósito de uso real.
+Colocar em prática conhecimentos de back-end com foco em lógica de negócios, persistência de dados e estruturação de uma aplicação funcional, com propósito de uso real.
 
 ## ⚙️ Funcionalidades
 
