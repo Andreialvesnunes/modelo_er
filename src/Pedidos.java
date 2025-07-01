@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Pedidos {
     Scanner input = new Scanner(System.in);
@@ -12,8 +10,10 @@ public class Pedidos {
     double total;
     String respostaUsuario;
     Produto produto;
+    Cliente cliente;
 
     protected static List<Produto> produtos = new ArrayList<>();
+//    protected static Map<String, Map<Integer, String>> clientes = new HashMap<>();
 
     protected void adicionarProduto(Produto produto){
         produtos.add(produto);
@@ -25,6 +25,7 @@ public class Pedidos {
 
         System.out.print("Digite o id do produto: ");
         id = input.nextInt();
+
 
         if (Produto.idENomeProduto.containsKey(id)){
             System.out.println("Quantidade disponível: " + Estoque.quantidades.get(1-id));
@@ -65,5 +66,9 @@ public class Pedidos {
         int quantidadeEstoque = quantidade - Estoque.quantidades.get(1-id);
 
         Estoque.quantidades.add(1-id, quantidadeEstoque);
+    }
+
+    private void adicionarPedido(){
+
     }
 }

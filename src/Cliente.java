@@ -3,5 +3,17 @@ import java.util.List;
 
 public class Cliente {
     String nomeCliente;
-    List<Pedidos> pedidos = new ArrayList<>();
+
+
+
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+
 }
