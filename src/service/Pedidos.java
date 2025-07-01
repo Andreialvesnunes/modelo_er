@@ -1,3 +1,5 @@
+package service;
+
 import java.util.*;
 
 public class Pedidos {
@@ -38,7 +40,6 @@ public class Pedidos {
                 quantidadeAtualizada(id, quantidade);
 
                 calcularValorTotalDoPedido(quantidade, 1-id);
-                adicionarProduto(produto);
             } else {
                 System.out.println("Quantidade indisponível");
 
@@ -50,11 +51,11 @@ public class Pedidos {
 
                     System.out.println("Quantidade indisponível");
                 }
-                adicionarProduto(produto);
                 quantidadeAtualizada(id, quantidade);
                 calcularValorTotalDoPedido(quantidade, 1-id);
             }
         }
+        finalizarPedido();
     }
 
     private void calcularValorTotalDoPedido(int quantidade, int id){
@@ -63,12 +64,17 @@ public class Pedidos {
     }
 
     private void quantidadeAtualizada(int id, int quantidade){
-        int quantidadeEstoque = quantidade - Estoque.quantidades.get(1-id);
+        int quantidadeEstoque = Estoque.quantidades.get(1-id) - quantidade;
 
         Estoque.quantidades.add(1-id, quantidadeEstoque);
     }
 
-    private void adicionarPedido(){
+    private void finalizarPedido(){
+        System.out.print("Deseja adicionar mais algum produto: ");
+        respostaUsuario = input.next();
 
+        while (respostaUsuario.equalsIgnoreCase("sim")){
+            adicionarProdutoParaPedido();
+        }
     }
 }

@@ -1,3 +1,5 @@
+package service;
+
 import java.util.*;
 
 public class Produto{
@@ -30,7 +32,7 @@ public class Produto{
         id = input.nextInt();
 
         if (idENomeProduto.containsKey(id)){
-            System.out.println("Produto já existe");
+            System.out.println("service.Produto já existe");
             do {
                 System.out.print("Digite o produto novamente: ");
                 id = input.nextInt();

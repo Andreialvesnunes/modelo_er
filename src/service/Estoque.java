@@ -1,3 +1,5 @@
+package service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class Estoque {
 
             quantidades.add(Produto.quantidadeProduto);
 
-            System.out.println("Produto Atualizado: " + Produto.idENomeProduto.get(id));
+            System.out.println("service.Produto Atualizado: " + Produto.idENomeProduto.get(id));
         } else {
             System.out.println("Id não encontrado");
             System.out.print("Deseja colocar o nome: ");
@@ -44,9 +46,9 @@ public class Estoque {
 
                     Produto.quantidadeProduto = quantidade;
 
-                    System.out.println("Produto atualizado: " + nomeProduto);
+                    System.out.println("service.Produto atualizado: " + nomeProduto);
                 } else {
-                    System.out.println("Produto não encontrado ):");
+                    System.out.println("service.Produto não encontrado ):");
                 }
             }
         }
