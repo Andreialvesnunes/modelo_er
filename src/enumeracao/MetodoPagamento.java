@@ -2,7 +2,7 @@ package enumeracao;
 
 public enum MetodoPagamento {
     CREDITO,
-    DEBTIO,
+    DEBITO,
     BOLETO,
     PIX
 }
