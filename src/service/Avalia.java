@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Avaliar {
+public class Avalia {
     private Map<Integer, Integer> avaliacoes = new HashMap<>();
     private String respostaUsuario;
 
