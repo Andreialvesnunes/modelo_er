@@ -12,6 +12,7 @@ public class Compra {
     private Cliente cliente;
     private Endereco endereco;
     private String dataDaCompra;
+    private int numeroPedido;
     private StatusPedido statusPedido;
     private MetodoPagamento pagamento;
 
@@ -52,21 +53,25 @@ public class Compra {
     }
 
     public void verificarStatusDoPedido(){
-       switch (pedidos.statusPedido){
-           case ENVIADO:
-               System.out.println("Produto já entregue");
-           break;
-           case ENVIANDO:
-               System.out.println("A caminho");
-           break;
-           case AGUARDANDO_PAGAMENTO:
-               System.out.println("Aguardando");
-           break;
-           case CANCELADO:
-               System.out.println("Pedido cancelado");
-           break;
+        System.out.print("Digite o número do pedido: ");
+        numeroPedido = scanner.nextInt();
 
-       }
+        if (Pedidos.listaDePedidos.containsKey(numeroPedido)){
+            switch (Pedidos.statusPedido){
+                case ENVIADO:
+                    System.out.println("Produto já entregue");
+                    break;
+                case ENVIANDO:
+                    System.out.println("A caminho");
+                    break;
+                case AGUARDANDO_PAGAMENTO:
+                    System.out.println("Aguardando pagamento");
+                    break;
+                case CANCELADO:
+                    System.out.println("Pedido cancelado");
+                    break;
+            }
+        }
     }
 
     public void selecionarMetodoDePagamento(){
@@ -89,7 +94,7 @@ public class Compra {
         }
     }
 
-    private void comprar(){
+    public void comprar(){
         selecionarMetodoDePagamento();
         switch (pagamento){
             case PIX:
