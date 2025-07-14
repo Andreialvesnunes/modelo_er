@@ -2,9 +2,7 @@ package service;
 
 import excecao.CpfDublicadoException;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Cliente {
     private String nomeCliente;
@@ -12,6 +10,7 @@ public class Cliente {
     private String cpf;
     private String respostaUsuario;
     private static final Map<String, String> cliente = new HashMap<>();
+    List<Compra> compras = new ArrayList<>();
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -41,12 +40,13 @@ public class Cliente {
     }
 
     public void cadastarCliente(){
+        System.out.println("CADASTRO");
         cadastrarCpfENome();
         cadastarIdade();
     }
 
     private void cadastrarCpfENome(){
-        System.out.println("Digite seu cpf: ");
+        System.out.print("Digite seu cpf: ");
         this.cpf = scanner.next();
         setCpf(this.cpf);
 
@@ -55,7 +55,7 @@ public class Cliente {
         }
 
         scanner.nextLine();
-        System.out.println("Digite seu nome: ");
+        System.out.print("Digite seu nome: ");
         this.nomeCliente = scanner.nextLine();
         setNomeCliente(nomeCliente);
 
@@ -63,7 +63,7 @@ public class Cliente {
     }
 
     private void cadastarIdade(){
-        System.out.println("Olá " + this.nomeCliente + " digite sua idade: ");
+        System.out.print("Olá " + this.nomeCliente.trim().split(" ")[0] + " digite sua idade: ");
         this.idade = scanner.nextInt();
         setIdade(idade);
     }
