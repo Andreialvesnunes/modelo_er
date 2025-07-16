@@ -4,7 +4,7 @@ public enum StatusPedido {
     AGUARDANDO_PAGAMENTO,
     ENVIADO,
     ENVIANDO,
-    ENTREGUE,
+    EM_PROCESSO_DE_DEVOLUCAO,
     CANCELADO
 
 
