@@ -10,9 +10,9 @@ public class Cliente {
     private Long id;
     private Endereco endereco;
     private String cpf;
-    private String respostaUsuario;
     private static final Map<String, String> cliente = new HashMap<>();
     List<Compra> compras = new ArrayList<>();
+    static List<Long> idCliente = new ArrayList<>();
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -53,6 +53,7 @@ public class Cliente {
         System.out.println("CADASTRO");
         cadastrarCpfENome();
         cadastarIdade();
+        gerarId();
         endereco.inserirNovoEndereco();
     }
 
@@ -74,10 +75,21 @@ public class Cliente {
     }
 
 
-
     private void cadastarIdade(){
         System.out.print("Olá " + this.nomeCliente.trim().split(" ")[0] + " digite sua idade: ");
         this.idade = scanner.nextInt();
         setIdade(idade);
+    }
+
+    private void gerarId(){
+        id = 1L;
+        if(idCliente.contains(id)){
+            while(idCliente.contains(id)){
+                id++;
+            }
+        } else {
+            idCliente.add(id);
+            setId(id);
+        }
     }
 }

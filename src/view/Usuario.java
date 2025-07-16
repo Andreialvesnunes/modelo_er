@@ -1,5 +1,6 @@
 package view;
 
+import service.Cliente;
 import service.Estoque;
 import service.Pedidos;
 import service.Produto;
@@ -13,10 +14,7 @@ public class Usuario {
         Pedidos pedidos = new Pedidos();
 
         Estoque estoque = new Estoque();
-
-        produto.adicionarProduto();
-        // produto1.adicionarProduto();
-
-        pedidos.adicionarProdutoParaPedido();
+        Cliente cliente = new Cliente();
+        cliente.cadastarCliente();    
     }
 }
