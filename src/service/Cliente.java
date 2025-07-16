@@ -7,6 +7,8 @@ import java.util.*;
 public class Cliente {
     private String nomeCliente;
     private int idade;
+    private Long id;
+    private Endereco endereco;
     private String cpf;
     private String respostaUsuario;
     private static final Map<String, String> cliente = new HashMap<>();
@@ -39,10 +41,19 @@ public class Cliente {
         this.cpf = cpf;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void cadastarCliente(){
         System.out.println("CADASTRO");
         cadastrarCpfENome();
         cadastarIdade();
+        endereco.inserirNovoEndereco();
     }
 
     private void cadastrarCpfENome(){
@@ -61,6 +72,8 @@ public class Cliente {
 
         cliente.putIfAbsent(this.cpf, this.nomeCliente);
     }
+
+
 
     private void cadastarIdade(){
         System.out.print("Olá " + this.nomeCliente.trim().split(" ")[0] + " digite sua idade: ");
