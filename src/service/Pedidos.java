@@ -8,17 +8,13 @@ public class Pedidos {
     Scanner input = new Scanner(System.in);
 
     private int quantidadePedido;
-    private int quantidade;
-    private int numeroDoPedido;
     private int id;
-    private double total;
-    private String respostaUsuario;
     private Produto produto;
     private Cliente cliente;
-    StatusPedido statusPedido;
+    static StatusPedido statusPedido;
 
     protected static List<Produto> produtos = new ArrayList<>();
-    protected List<Integer> listaDePedidos = new ArrayList<>();
+    protected static Map<Integer, Enum> listaDePedidos = new HashMap<>();
 
     protected void adicionarProduto(Produto produto){
         produtos.add(produto);
@@ -36,7 +32,7 @@ public class Pedidos {
             System.out.println("Quantidade disponível: " + Estoque.quantidades.get(1-id));
 
             System.out.print("Quantidade desejada: ");
-            quantidade = input.nextInt();
+            int quantidade = input.nextInt();
 
             if (quantidade < Estoque.quantidades.get(1-id)){
 
@@ -61,7 +57,7 @@ public class Pedidos {
     }
 
     private void calcularValorTotalDoPedido(int quantidade, int id){
-        total = quantidade * Produto.precosProdutos.get(id);
+        double total = quantidade * Produto.precosProdutos.get(id);
         System.out.println("O valor do pedido: " + total);
     }
 
@@ -73,6 +69,7 @@ public class Pedidos {
 
     public void realizarPedido(){
 
+        String respostaUsuario;
         do {
             adicionarProdutoParaPedido();
             System.out.print("Deseja adicionar algum produto: ");
@@ -85,18 +82,20 @@ public class Pedidos {
     private void finalizarPedido(){
         Random numeroAleatorio = new Random();
 
-        numeroDoPedido = numeroAleatorio.nextInt(1000, 100000);
+        int numeroDoPedido = numeroAleatorio.nextInt(1000, 100000);
 
-        if (listaDePedidos.contains(numeroDoPedido)){
+        if (listaDePedidos.containsKey(numeroDoPedido)){
            do {
                numeroDoPedido = numeroAleatorio.nextInt(1000,100000);
-           } while (listaDePedidos.contains(numeroDoPedido));
+           } while (listaDePedidos.containsKey(numeroDoPedido));
         }
-        listaDePedidos.add(numeroDoPedido);
 
         System.out.println("Finalizando pedido...");
         System.out.println("Número do pedido: " + numeroDoPedido);
 
         statusPedido = StatusPedido.AGUARDANDO_PAGAMENTO;
+        listaDePedidos.put(numeroDoPedido, statusPedido);
     }
+
+
 }
