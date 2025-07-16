@@ -12,13 +12,11 @@ public class Compra {
     private Cliente cliente;
     private Endereco endereco;
     private String dataDaCompra;
-    private int numeroPedido;
     private StatusPedido statusPedido;
     private MetodoPagamento pagamento;
 
 
-    private Scanner scanner = new Scanner(System.in);
-    private String respostaUsuario;
+    private final Scanner scanner = new Scanner(System.in);
 
     public Long getId() {
         return id;
@@ -54,7 +52,7 @@ public class Compra {
 
     public void verificarStatusDoPedido(){
         System.out.print("Digite o número do pedido: ");
-        numeroPedido = scanner.nextInt();
+        int numeroPedido = scanner.nextInt();
 
         if (Pedidos.listaDePedidos.containsKey(numeroPedido)){
             switch (Pedidos.statusPedido){
@@ -69,17 +67,19 @@ public class Compra {
                     break;
                 case CANCELADO:
                     System.out.println("Pedido cancelado");
-                    break;
+                break;
             }
+        } else {
+            System.out.println("Esse pedido não existe");
         }
     }
 
-    public void selecionarMetodoDePagamento(){
+    private void selecionarMetodoDePagamento(){
         System.out.println("Forma de Pagamento");
         System.out.println("PIX, CRÉDITO, DÉBITO, BOLETO");
 
         System.out.println("Escolha a forma de pagamento: ");
-        respostaUsuario = scanner.next();
+        String respostaUsuario = scanner.next();
 
         if (respostaUsuario.equalsIgnoreCase("pix")){
             pagamento = MetodoPagamento.PIX;
@@ -92,6 +92,10 @@ public class Compra {
         } else {
             System.out.println("Essa forma de pagamento não existe");
         }
+    }
+
+    private void pegarPedido(){
+        Pedidos.listaDePedidos.get(1);
     }
 
     public void comprar(){
@@ -114,11 +118,19 @@ public class Compra {
         }
     }
 
-    private void pagamentoViaPix(){}
+    private void pagamentoViaPix(){
+        System.out.println("QR Code");
+    }
 
-    private void pagamentoViaBoleto(){}
+    private void pagamentoViaBoleto(){
+        System.out.println("Gerando boleto");
+    }
 
-    private void pagamentoViaCredito(){}
+    private void pagamentoViaCredito(){
+        System.out.println("Numero do cartao de credito");
+    }
 
-    private void pagamentoViaDebito(){}
+    private void pagamentoViaDebito(){
+        System.out.println("numero do cartão de debito");
+    }
 }
