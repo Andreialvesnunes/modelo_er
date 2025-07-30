@@ -118,7 +118,7 @@ public class Compra {
         }
     }
 
-    private void pagamentoViaPix(){
+    private void pagamentoViaPix(){          
         System.out.println("QR Code");
     }
 
