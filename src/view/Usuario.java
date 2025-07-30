@@ -1,8 +1,6 @@
 package view;
 
-import service.Estoque;
-import service.Pedidos;
-import service.Produto;
+import service.*;
 
 public class Usuario {
     public static void main(String[] args) {
@@ -11,12 +9,14 @@ public class Usuario {
         Produto produto2 = new Produto();
 
         Pedidos pedidos = new Pedidos();
-
-        Estoque estoque = new Estoque();
+        Compra compra = new Compra();
 
         produto.adicionarProduto();
-        // produto1.adicionarProduto();
+        pedidos.realizarPedido();
+        compra.verificarStatusDoPedido();
+        compra.comprar();
 
-        pedidos.adicionarProdutoParaPedido();
+
+
     }
 }
