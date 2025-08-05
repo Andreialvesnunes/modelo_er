@@ -14,8 +14,8 @@ public class DAO <E>{
     static {
         try {
             emf = Persistence.createEntityManagerFactory("modelo_er");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e);
         }
     }
 
